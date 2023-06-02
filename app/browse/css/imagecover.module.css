@@ -1,0 +1,17 @@
+.title, .subtitle {
+    font-family: 'Fuji';
+    font-size: x-large;
+    position: absolute;
+    z-index: 1;
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+
+.title {
+    top: 30px;
+}
+
+.subtitle {
+    bottom: 30px;
+}
