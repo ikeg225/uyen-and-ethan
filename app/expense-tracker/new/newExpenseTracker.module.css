@@ -1,0 +1,76 @@
+.wrapper {
+    background-color: #add5c9;
+    height: 100%;
+    font-family: 'Fuji';
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    background-color: white;
+    padding: 2em;
+    height: 100%;
+    border-radius: 1em 1em 0 0;
+}
+
+.header {
+    color: #0d3a35;
+    padding: 2em;
+}
+
+.header h1 {
+    margin-top: 0.5em;
+}
+
+.header a {
+    color: #0d3a35;
+    text-decoration: none;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.input input {
+    background-color: #0d3a35;
+    color: white;
+    font-family: 'Fuji';
+    padding: 1em 2em;
+    border: none;
+    border-radius: 1em;
+}
+
+.input input::placeholder {
+    color: rgb(203, 203, 203);
+}
+
+.input select {
+    background-color: #0d3a35;
+    color: white;
+    font-family: 'Fuji';
+    padding: 1em 2em;
+    border: none;
+    border-radius: 1em;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+
+.submit {
+    border: solid 2px #0d3a35;
+    background-color: white;
+    font-family: 'Fuji';
+    padding: 1em 2em;
+    color: #0d3a35;
+    border-radius: 1em;
+    cursor: pointer;
+}
+
+.submit:hover {
+    background-color: #0d3a35;
+    color: white;
+}

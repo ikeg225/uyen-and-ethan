@@ -1,0 +1,58 @@
+.wrapper {
+    background-color: #add5c9;
+}
+
+.header {
+    padding: 2em;
+    color: #0d3a35;
+    font-family: 'Fuji';
+    text-align: center;
+}
+
+.header a {
+    color: #0d3a35;
+    text-decoration: none;
+}
+
+.navigation {
+    margin-bottom: 2em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.expenses {
+    background-color: white;
+    border-radius: 1em 1em 0 0;
+    padding: 2em;
+}
+
+.dayExpense {
+    font-family: 'Fuji';
+    margin-bottom: 3em;
+}
+
+.item {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1em;
+    padding-top: 1em;
+    border-bottom: solid 1px #91a09d;
+}
+
+.itemInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.lightColor {
+    color: #91a09d;
+}
+
+.darkGreen {
+    color: #0d3a35;
+}

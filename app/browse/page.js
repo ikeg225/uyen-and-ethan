@@ -1,3 +1,5 @@
+"use client";
+
 import SOTD from './images/song-of-the-day.jpg';
 import onetwothree from './images/1-2-3.jpg';
 import AudioRecordings from './images/audio-recordings.jpg';
@@ -12,8 +14,21 @@ import WorkoutTracker from './images/workout-tracker.jpg';
 import styles from './css/browse.module.css';
 import ImageCover from './imagecover';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation'
+import { useEffect } from 'react';
 
 export default function Browse() {
+  const router = useRouter();
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const code = localStorage.getItem("code");
+      if (code !== '03092002' && code !== '01262002') {
+        router.push('/')
+      }
+    }
+  }, []);
+
   return (
     <div style={{width: '100%', height: '100%'}}>
       <Link href="/song-of-the-day"><ImageCover src={SOTD} title={"Song of the Day"} subtitle={"Doses & Mimosas"}/></Link>    
