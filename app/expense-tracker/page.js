@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 export default function ExpenseTracker() {
     const [expenses, setExpenses] = useState([])
-    const [spendings, setSpendings] = useState(0)
+    const [spendings, setSpendings] = useState("--")
     const [byDayExpenses, setByDayExpenses] = useState([])
 
     function getMonthName(monthNumber) {
@@ -80,11 +80,11 @@ export default function ExpenseTracker() {
             </div>
             <div className={styles.expenses}>
                 {byDayExpenses.map((expenses) => (
-                    <div className={styles.dayExpense}>
+                    <div className={styles.dayExpense} key={expenses[0].day + expenses[0].month + expenses[0].year}>
                         <p className={styles.lightColor}>{expenses[0].day} {getMonthName(expenses[0].month)} {expenses[0].year}</p>
                         <div className={styles.expense}>
                             {expenses[1].map((item) => (
-                                <div className={styles.item}>
+                                <div className={styles.item} key={item[0] + item[1] + item[2]}>
                                     <div className={styles.itemInfo}>
                                         <p className={styles.darkGreen}>{item[1]}</p>
                                         <p className={styles.lightColor}>{item[2]}</p>

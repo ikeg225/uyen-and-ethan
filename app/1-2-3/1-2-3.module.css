@@ -1,0 +1,109 @@
+.wrapper {
+    font-family: 'Fuji';
+}
+
+.header {
+    background-color: #2d4ffd;
+    color: white;
+    padding: 2em;
+    border-bottom: solid 2px black;
+}
+
+.header a {
+    color: white;
+    text-decoration: none;
+}
+
+.navigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 1em;
+}
+
+.content {
+    padding: 2em;
+}
+
+.textarea {
+    font-family: 'Fuji';
+    font-size: large;
+    border: none;
+    width: 100%;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    resize: none;
+    padding-bottom: 1em;
+}
+
+.textarea:focus {
+    outline: none !important;
+}
+
+.submission {
+    border: solid 2px #2d4ffd;
+    border-radius: 1em;
+    padding: 0.5em;
+    margin-bottom: 2em;
+}
+
+.byline {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.byline button {
+    background-color: #2d4ffd;
+    color: white;
+    font-family: 'Fuji';
+    border: solid 1px black;
+    padding: 0.5em 1em;
+    border-radius: 1em;
+    cursor: pointer;
+}
+
+.message {
+    display: grid;
+    grid-template-columns: 25px 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "header header"
+        "leftBottom rightBottom";
+    column-gap: 1em;
+    row-gap: 0.5em;
+    margin-bottom: 2em;
+}
+
+.topRow, .timestamp {
+    align-self: center;
+}
+
+.timestamp {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.comment {
+    grid-area: rightBottom;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border-radius: 1em;
+    padding: 1em;
+    margin-left: -1em;
+    white-space: pre-line;
+}
+
+.commentHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.like {
+    cursor: pointer;
+}
