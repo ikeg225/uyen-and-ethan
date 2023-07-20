@@ -3,14 +3,11 @@
 }
 
 .header {
-    background-color: #2d4ffd;
-    color: white;
     padding: 2em;
     border-bottom: solid 2px black;
 }
 
 .header a {
-    color: white;
     text-decoration: none;
 }
 
@@ -46,7 +43,6 @@
 }
 
 .submission {
-    border: solid 2px #2d4ffd;
     border-radius: 1em;
     padding: 0.5em;
     margin-bottom: 2em;
@@ -60,7 +56,6 @@
 }
 
 .byline button {
-    background-color: #2d4ffd;
     color: white;
     font-family: 'Fuji';
     border: solid 1px black;
