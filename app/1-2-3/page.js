@@ -16,7 +16,7 @@ function toDateAndTime(timestamp) {
     const hours = date.getHours() % 12;
     const minutes = date.getMinutes();
     const ampm = date.getHours() >= 12 ? 'pm' : 'am';
-    return `${month}/${day}/${year} ${hours}:${minutes} ${ampm}`;
+    return `${month}/${day}/${year} ${hours}:${minutes < 10 ? 0 : ''}${minutes} ${ampm}`;
 }
 
 function codeToPhoto(code) {
@@ -126,7 +126,6 @@ export default function oneTwoThree() {
                             <Image src={codeToPhoto(message.userId)} width={25} height={25} className={styles.topRow} />
                             <div className={styles.commentHeader}>
                                 <p className={styles.timestamp}>{toDateAndTime(message.timestamp)}</p>
-                                {console.log(message.likedBy)}
                                 { code !== message.userId && message.likedBy.length === 0 && <p className={styles.like} onClick={likeComment}>Like!</p> }
                                 { message.likedBy.length > 0 && <p>&#10084;</p> }
                             </div>
