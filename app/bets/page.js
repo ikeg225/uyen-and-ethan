@@ -163,7 +163,7 @@ export default function Bets() {
                             <input className={styles.inputField} type="date" id="date" name="date" required/>
                         </div>
                         <div className={styles.input}>
-                            <label htmlFor="amount">What's the bet: </label>
+                            <label htmlFor="amount">What&apos;s the bet: </label>
                             <input className={styles.inputField} type="text" id="description" name="description" required placeholder="description" />
                         </div>
                         <div className={styles.input}>
