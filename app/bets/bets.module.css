@@ -100,6 +100,32 @@
     width: 100px;
 }
 
+.bets {
+    margin-top: 2em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.bet, .betLeft {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .bet {
-    color: #272d2d;
+    justify-content: space-between;
+    border-bottom: solid 1px #272d2d8b;
+    padding-bottom: 1em;
+    gap: 1em;
+}
+
+.betLeft {
+    gap: 0.5em;
+}
+
+.description {
+    text-align: center;
 }

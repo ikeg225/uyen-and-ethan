@@ -3,12 +3,24 @@
 import styles from './bets.module.css'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
+import ethan from './ethanBets.png'
+import uyen from './uyenBets.png'
+import Image from 'next/image';
+import unknown from './unknown.png'
+
+function codeToImage(code) {
+    if (code === '03092002') return ethan;
+    if (code === '01262002') return uyen;
+    return unknown;
+}
 
 export default function Bets() {
     const [form, setForm] = useState(true)
     const [addBetButton, setAddBetButton] = useState("Add Bet")
     const [updateBetButton, setUpdateBetButton] = useState("Update Bet")
     const [bets, setBets] = useState([])
+    const [name, setName] = useState('')
+    const [earnings, setEarnings] = useState('--')
 
     useEffect(() => {
         if (typeof window !== "undefined") {
@@ -16,13 +28,26 @@ export default function Bets() {
             if (code !== '03092002' && code !== '01262002') {
                 router.push('/')
             } else {
+                setName(code === '01262002' ? 'Uyen' : 'Ethan')
                 async function fetchBets() {
-                    const response = await fetch(`/api/bets`);
+                    const response = await fetch('/api/bets');
                     const res = await response.json();
                     const sorted_bets = await res.bets.sort((a, b) => b.betId - a.betId);
                     setBets(sorted_bets);
                 }
                 fetchBets();
+                async function fetchEarnings() {
+                    const response = await fetch('/api/bets/earnings');
+                    const res = await response.json();
+                    const ethanEarnings = await res.ethanEarnings;
+                    const uyenEarnings = await res.uyenEarnings;
+                    if (code === '01262002') {
+                        setEarnings(uyenEarnings - ethanEarnings)
+                    } else {
+                        setEarnings(ethanEarnings - uyenEarnings)
+                    }
+                }
+                fetchEarnings();
             }
         }
     }, []);
@@ -54,7 +79,15 @@ export default function Bets() {
         const res = await response.json();
         if (res.message === 'success') {
             setAddBetButton("Add Bet")
-            // TOOD: add to list of bets and earnings up top
+            data['betId'] = bets[0]['betId'] + 1
+            setBets([data, ...bets]);
+            if (winnerId.length > 0) {
+                if (winnerId === localStorage.getItem('code')) {
+                    setEarnings(parseInt(earnings) + parseInt(amount));
+                } else {
+                    setEarnings(parseInt(earnings) - parseInt(amount));
+                }
+            }
         }
     }
 
@@ -82,7 +115,25 @@ export default function Bets() {
         const res = await response.json();
         if (res.message === 'success') {
             setUpdateBetButton("Update Bet")
-            // TOOD: update list of bets and earnings up top
+            const new_bets = bets.map(function (bet) {
+                if (parseInt(bet['betId']) === parseInt(betId)) {
+                    bet['userIdWinner'] = winnerId;
+                    if (winnerId === localStorage.getItem('code')) {
+                        setEarnings(parseInt(earnings) + parseInt(bet['amount']));
+                    } else {
+                        setEarnings(parseInt(earnings) - parseInt(bet['amount']));
+                    }
+                    return {
+                        betId: betId,
+                        userIdWinner: winnerId,
+                        date: bet['date'],
+                        amount: bet['amount'],
+                        description: bet['description']
+                    }
+                }
+                return bet;
+            })
+            setBets(new_bets)
         }
     }
 
@@ -96,8 +147,8 @@ export default function Bets() {
                     <p>Bets</p>
                 </div>
                 <div className={styles.title}>
-                    <p>winnings</p>
-                    <h1>Uyen: $45</h1>
+                    <p>earnings</p>
+                    <h1>{name}: ${earnings}</h1>
                 </div>
             </div>
             <div className={styles.content}>
@@ -150,15 +201,19 @@ export default function Bets() {
                     </form>}
                 </div>
                 <div className={styles.bets}>
-                    {bets.map((bet, index) => {
+                    {bets.map((bet, index) => (
                         <div key={index} className={styles.bet}>
-                            <p>{bet.description}</p>
-                            <p>{bet.amount}</p>
-                            <p>{bet.date}</p>
-                            <p>{bet.userIdWinner}</p>
-                            <p>{bet.betId}</p>
+                            <div>
+                                <div className={styles.betLeft}>
+                                    <h2>#{bet.betId}</h2>
+                                    <Image src={codeToImage(bet.userIdWinner)} height={30} width={30} />
+                                </div>
+                                <p>{bet.date}</p>
+                            </div>
+                            <p className={styles.description}>{bet.description}</p>
+                            <p>${bet.amount}</p>
                         </div>
-                    })}
+                    ))}
                 </div>
             </div>
         </div>
