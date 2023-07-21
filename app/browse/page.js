@@ -22,6 +22,8 @@ export default function Browse() {
   const [userExpenses, setUserExpenses] = useState(["--", "--"]);
   const [oneTwoThreeDate, setOneTwoThreeDate] = useState("--/--/--");
   const [encouragementDate, setEncouragementDate] = useState("--/--/--");
+  const [name, setName] = useState('')
+  const [earnings, setEarnings] = useState('--')
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -29,6 +31,7 @@ export default function Browse() {
       if (code !== '03092002' && code !== '01262002') {
         router.push('/')
       } else {
+        setName(code === '01262002' ? 'Uyen' : 'Ethan')
         async function getUserExpenses() {
           const res = await fetch("/api/expenses");
           const json = await res.json();
@@ -51,13 +54,25 @@ export default function Browse() {
           setEncouragementDate(date);
         }
         getEncouragement();
+        async function fetchEarnings() {
+          const response = await fetch('/api/bets/earnings');
+          const res = await response.json();
+          const ethanEarnings = await res.ethanEarnings;
+          const uyenEarnings = await res.uyenEarnings;
+          if (code === '01262002') {
+              setEarnings(uyenEarnings - ethanEarnings)
+          } else {
+              setEarnings(ethanEarnings - uyenEarnings)
+          }
+        }
+        fetchEarnings();
       }
     }
   }, []);
 
   return (
     <div style={{width: '100%', height: '100%'}}>
-      <Link href="/bets"><ImageCover src={Bets} title={"Bets"} subtitle={"Uyen: $45"}/></Link>
+      <Link href="/bets"><ImageCover src={Bets} title={"Bets"} subtitle={`${name}: $${earnings}`}/></Link>
       <Link href="/1-2-3"><ImageCover src={onetwothree} title={"1-2-3"} subtitle={oneTwoThreeDate}/></Link>
       <Link href="/expense-tracker"><ImageCover src={ExpenseTracker} title={"Expense Tracker"} subtitle={`Ethan: $${userExpenses[0]} | Uyen: $${userExpenses[1]}`} /></Link>
       <Link href="/encouragement-message"><ImageCover src={EncouragementMessage} title={"Encouragement Message"} subtitle={encouragementDate}/></Link>
