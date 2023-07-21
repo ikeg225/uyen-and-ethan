@@ -1,0 +1,105 @@
+.wrapper {
+    font-family: 'Fuji';
+    color: #272d2d;
+    background-color: #f6f87c;
+    height: 100%;
+}
+
+.header {
+    padding: 2em;
+}
+
+.header a {
+    color: #272d2d;
+    text-decoration: none;
+}
+
+.navigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.title {
+    margin: 1em 0;
+    text-align: center;
+}
+
+.content {
+    background-color: white;
+    border-radius: 2em 2em 0 0;
+    padding: 2em;
+    height: 100%;
+}
+
+.formWrapper {
+    background-color: #272d2d;
+    padding: 2em;
+    border-radius: 1em;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.inputField, .form select {
+    border: none;
+    font-family: 'Fuji';
+    border-bottom: solid 1px #272d2d;
+    background-color: #272d2d;
+    color: white;
+    width: 100px;
+}
+
+.inputField::placeholder {
+    color: white;
+}
+
+.input {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: white;
+}
+
+.formOptions {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    margin-bottom: 1em;
+    gap: 0.5em;
+    align-items: center;
+}
+
+.formOptions p {
+    cursor: pointer;
+}
+
+.selected {
+    background-color: #f6f87c;
+    color: #272d2d;
+    padding: 0.25em 0.5em;
+    border-radius: 0.5em;
+}
+
+.submitWrapper {
+    text-align: center;
+}
+
+.submit {
+    cursor: pointer;
+    border: none;
+    margin-top: 1em;
+    background-color: #f6f87c;
+    color: #272d2d;
+    padding: 0.5em 0.5em;
+    border-radius: 0.5em;
+    font-family: 'Fuji';
+    width: 100px;
+}
+
+.bet {
+    color: #272d2d;
+}
