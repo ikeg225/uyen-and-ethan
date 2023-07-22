@@ -8,6 +8,11 @@
   src: url("Fuji-Regular.otf");
 }
 
+@font-face {
+  font-family: 'Avenir';
+  src: url("Avenir Next LT Pro Demi.otf");
+}
+
 * {
   box-sizing: border-box;
   padding: 0;

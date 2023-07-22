@@ -70,17 +70,26 @@ export default function Browse() {
     }
   }, []);
 
+  const today = new Date();
+  const archiveDate = new Date(2021, 6, 23);
+  const diffTime = Math.abs(today - archiveDate);
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  const years = Math.floor(diffDays / 365);
+  const months = Math.floor((diffDays - years * 365) / 30);
+  const days = diffDays - years * 365 - months * 30;
+  const archiveSubtitle = `${years} years, ${months} months, ${days} days`;
+
   return (
     <div style={{width: '100%', height: '100%'}}>
       <Link href="/bets"><ImageCover src={Bets} title={"Bets"} subtitle={`${name}: $${earnings}`}/></Link>
       <Link href="/1-2-3"><ImageCover src={onetwothree} title={"1-2-3"} subtitle={oneTwoThreeDate}/></Link>
       <Link href="/expense-tracker"><ImageCover src={ExpenseTracker} title={"Expense Tracker"} subtitle={`Ethan: $${userExpenses[0]} | Uyen: $${userExpenses[1]}`} /></Link>
       <Link href="/encouragement-message"><ImageCover src={EncouragementMessage} title={"Encouragement Message"} subtitle={encouragementDate}/></Link>
+      <Link href="/the-archive"><ImageCover src={TheArchive} title={"The Archive"} subtitle={archiveSubtitle}/></Link>
       <Link href="/song-of-the-day"><ImageCover src={SOTD} title={"Song of the Day"} subtitle={"Doses & Mimosas"}/></Link>    
       <Link href="/audio-recordings"><ImageCover src={AudioRecordings} title={"Audio Recordings"} subtitle={"11 recordings"}/></Link>
       <Link href="/like-dislikes"><ImageCover src={LikeDislikes} title={"Like & Dislikes"} subtitle={"123 likes, 58 dislikes"}/></Link>
       <Link href="/pics-of-us"><ImageCover src={PicsOfUs} title={"Pics of Us"} subtitle={""}/></Link>
-      <Link href="/the-archive"><ImageCover src={TheArchive} title={"The Archive"} subtitle={"2 years, 1 month, 1 day"}/></Link>
       <Link href="/workout-tracker"><ImageCover src={WorkoutTracker} title={"Workout Tracker"} subtitle={"20 times in the last 30 days"}/></Link>
     </div>
   )
