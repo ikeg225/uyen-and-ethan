@@ -81,10 +81,10 @@ export default function Browse() {
 
   return (
     <div style={{width: '100%', height: '100%'}}>
-      <Link href="/bets"><ImageCover src={Bets} title={"Bets"} subtitle={`${name}: $${earnings}`}/></Link>
-      <Link href="/1-2-3"><ImageCover src={onetwothree} title={"1-2-3"} subtitle={oneTwoThreeDate}/></Link>
       <Link href="/expense-tracker"><ImageCover src={ExpenseTracker} title={"Expense Tracker"} subtitle={`Ethan: $${userExpenses[0]} | Uyen: $${userExpenses[1]}`} /></Link>
+      <Link href="/1-2-3"><ImageCover src={onetwothree} title={"1-2-3"} subtitle={oneTwoThreeDate}/></Link>
       <Link href="/encouragement-message"><ImageCover src={EncouragementMessage} title={"Encouragement Message"} subtitle={encouragementDate}/></Link>
+      <Link href="/bets"><ImageCover src={Bets} title={"Bets"} subtitle={`${name}: $${earnings}`}/></Link>
       <Link href="/the-archive"><ImageCover src={TheArchive} title={"The Archive"} subtitle={archiveSubtitle}/></Link>
       <Link href="/song-of-the-day"><ImageCover src={SOTD} title={"Song of the Day"} subtitle={"Doses & Mimosas"}/></Link>    
       <Link href="/audio-recordings"><ImageCover src={AudioRecordings} title={"Audio Recordings"} subtitle={"11 recordings"}/></Link>
