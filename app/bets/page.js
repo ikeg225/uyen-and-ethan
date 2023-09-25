@@ -43,7 +43,7 @@ export default function Bets() {
                     const uyenEarnings = await res.uyenEarnings;
                     if (code === '01262002') {
                         setEarnings(uyenEarnings - ethanEarnings)
-                    } else {
+                    } else if (code === '03092002') {
                         setEarnings(ethanEarnings - uyenEarnings)
                     }
                 }
